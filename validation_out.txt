@@ -1,0 +1,1 @@
+bash: openenv: command not found

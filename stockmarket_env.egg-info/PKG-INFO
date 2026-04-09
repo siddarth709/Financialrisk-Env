@@ -1,0 +1,53 @@
+Metadata-Version: 2.4
+Name: stockmarket-env
+Version: 0.1.0
+Summary: Stock Market Monitoring Assistant using RL to combat alert fatigue.
+License: MIT
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: torch>=2.0
+Requires-Dist: torchvision>=0.15
+Requires-Dist: stable-baselines3>=2.0
+Requires-Dist: matplotlib>=3.7
+Requires-Dist: seaborn>=0.12
+Requires-Dist: plotly>=5.15
+Requires-Dist: tqdm>=4.66
+Requires-Dist: pyyaml>=6.0
+Requires-Dist: tensorboard>=2.14
+Requires-Dist: gradio>=4.0.0
+Requires-Dist: openai
+Requires-Dist: fastapi
+Requires-Dist: uvicorn
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: gymnasium
+Requires-Dist: openenv-core>=0.2.0
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: black; extra == "dev"
+Requires-Dist: isort; extra == "dev"
+
+---
+title: Stock Market Monitoring Assistant
+emoji: 📊
+colorFrom: yellow
+colorTo: red
+sdk: docker
+app_file: app.py
+pinned: false
+---
+
+# Stock Market Monitoring Assistant
+
+An AI-powered Stock Market Monitoring Terminal designed to combat alert fatigue in high-frequency trading environments. This space uses Reinforcement Learning (PPO) to intelligently decide when to alert a trader about market risks vs. when to intervene or remain silent.
+
+### Features
+- **Real-time Telemetry**: Plotly-based tracking of Portfolio Risk and Trader Stress.
+- **Smart Alerting**: RL agent trained to balance safety with cognitive bandwidth.
+- **Bloomberg Aesthetic**: High-contrast, data-dense interface for professional risk analysis.
+
+### Local Development
+```bash
+pip install -r requirements.txt
+python app.py
+```

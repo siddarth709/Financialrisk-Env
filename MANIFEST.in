@@ -1,0 +1,6 @@
+include README.md
+include requirements.txt
+include openenv.yaml
+recursive-include envs *.py
+recursive-include server *.py
+include models/*.zip
