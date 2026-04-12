@@ -6,7 +6,7 @@ def grade_episode(trajectory):
     Returns a score between 0.0 and 1.0.
     """
     if not trajectory:
-        return 0.0
+        return 0.01
 
     # 1. Survival Rate (40%)
     max_steps = 100 # Default max steps
