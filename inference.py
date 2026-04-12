@@ -47,8 +47,8 @@ class OpenEnvInference:
         except Exception as e:
             return f"Rationale unavailable: {str(e)}"
 
-    def run(self, max_steps=20):
-        obs, info = self.env.reset()
+    def run(self, max_steps=100, task_id=None):
+        obs, info = self.env.reset(options={"task_id": task_id})
         total_reward = 0
         
         for i in range(max_steps):
@@ -82,5 +82,6 @@ class OpenEnvInference:
         })
 
 if __name__ == "__main__":
+    task_id = os.getenv("OPENENV_TASK_ID")
     agent = OpenEnvInference()
-    agent.run()
+    agent.run(task_id=task_id)
