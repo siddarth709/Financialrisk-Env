@@ -17,7 +17,6 @@ class OpenEnvInference:
         
         self.client = OpenAI(base_url=self.api_base_url, api_key=self.hf_token)
         self.env = TradingEnv()
-        import os
         os.makedirs("./models", exist_ok=True)
         if not os.path.exists("./models/ppo_trading_final.zip"):
             try:
