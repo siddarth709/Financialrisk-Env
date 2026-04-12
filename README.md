@@ -1,6 +1,5 @@
 ---
 title: Stock Market Monitoring Assistant
-emoji: none
 colorFrom: yellow
 colorTo: red
 sdk: docker
