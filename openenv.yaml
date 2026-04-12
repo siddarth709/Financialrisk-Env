@@ -1,0 +1,24 @@
+version: "1.0"
+environment:
+  name: "Stock Market Monitoring Assistant"
+  type: "reinforcement-learning"
+  version: "2.0.0"
+  endpoints:
+    reset: "/reset"
+    step: "/step"
+    state: "/state"
+  observation_space:
+    shape: [5]
+    type: "box"
+    high: 1.0
+    low: 0.0
+  action_space:
+    type: "discrete"
+    n: 3
+    meanings: ["ALERT", "SILENT", "INTERVENE"]
+metadata:
+  entrypoint: "app.py"
+  inference_entrypoint: "inference.py"
+  docker:
+    image: "python:3.11-slim"
+    exposed_port: 7860
