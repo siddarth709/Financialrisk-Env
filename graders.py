@@ -27,6 +27,8 @@ def grade_episode(trajectory):
     stress_score = 1.0 - stress_2_ratio
 
     final_score = (survival_score * 0.4) + (risk_score * 0.4) + (stress_score * 0.2)
+    # Ensure score is strictly between 0 and 1 as per requirement
+    final_score = 0.01 + 0.98 * final_score
     return float(np.round(final_score, 3))
 
 if __name__ == "__main__":
