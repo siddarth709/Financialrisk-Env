@@ -24,10 +24,26 @@ class TradingEnv(gym.Env):
     def reset(self, seed=None, options=None):
         super().reset(seed=seed)
         self.step_count = 0
-        self.share_risks = self.np_random.uniform(0.1, 0.3, size=self.num_shares)
+        task_id = options.get("task_id") if options else None
+
+        if task_id == "stability_basic":
+            self.share_risks = np.full(self.num_shares, 0.2)
+            self.market_volatility = 0.2
+            self.trader_stress = 0.0
+        elif task_id == "volatility_spike":
+            self.share_risks = np.full(self.num_shares, 0.4)
+            self.market_volatility = 0.8
+            self.trader_stress = 1.0
+        elif task_id == "market_crash":
+            self.share_risks = np.full(self.num_shares, 0.8)
+            self.market_volatility = 0.9
+            self.trader_stress = 2.0
+        else:
+            self.share_risks = self.np_random.uniform(0.1, 0.3, size=self.num_shares)
+            self.market_volatility = float(self.np_random.uniform(0.2, 0.5))
+            self.trader_stress = float(self.np_random.choice([0.0, 1.0, 2.0], p=[0.3, 0.4, 0.3]))
+        
         self.portfolio_risk = float(np.mean(self.share_risks))
-        self.market_volatility = float(self.np_random.uniform(0.2, 0.5))
-        self.trader_stress = float(self.np_random.choice([0.0, 1.0, 2.0], p=[0.3, 0.4, 0.3]))
         self.last_action = 1
         self.error_signal = 0.0
 
@@ -37,7 +53,8 @@ class TradingEnv(gym.Env):
             "portfolio_risk": float(self.portfolio_risk),
             "volatility": float(self.market_volatility),
             "step": int(self.step_count),
-            "share_risks": {name: float(risk) for name, risk in zip(self.share_names, self.share_risks)}
+            "share_risks": {name: float(risk) for name, risk in zip(self.share_names, self.share_risks)},
+            "task_id": task_id
         }
         return obs, info
 

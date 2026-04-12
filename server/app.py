@@ -101,11 +101,11 @@ def run_simulation(steps):
         font=dict(color="#e0e0e0")
     )
     
-    status = "⚠️ CRITICAL RISK" if env.portfolio_risk > 0.8 else "✅ STABLE"
+    status = "CRITICAL RISK" if env.portfolio_risk > 0.8 else "STABLE"
     return fig, df, f"SIMULATION STATUS: {status} | FINAL RISK: {env.portfolio_risk:.2f}"
 
 with gr.Blocks() as demo:
-    gr.Markdown("# ⚡ Stock Market Monitoring Terminal")
+    gr.Markdown("# Stock Market Monitoring Terminal")
     
     with gr.Row():
         with gr.Column(scale=2):
@@ -113,7 +113,7 @@ with gr.Blocks() as demo:
         with gr.Column(scale=1):
             status_text = gr.Textbox(label="System Status", interactive=False)
             steps_slider = gr.Slider(minimum=10, maximum=100, value=50, step=10, label="Simulation Horizon")
-            run_btn = gr.Button("🚀 START MONITORING", variant="primary")
+            run_btn = gr.Button("START MONITORING", variant="primary")
             
     with gr.Row():
         logs = gr.Dataframe(label="Real-time Event Log")

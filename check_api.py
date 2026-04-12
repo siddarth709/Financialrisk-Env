@@ -26,12 +26,12 @@ def test_api():
         print(f"Status: {r_state.status_code}, Response: {r_state.json()}")
         
         if r_reset.status_code == 200 and r_step.status_code == 200:
-            print("\n✅ API VERIFICATION SUCCESSFUL")
+            print("\nAPI VERIFICATION SUCCESSFUL")
         else:
-            print("\n❌ API VERIFICATION FAILED")
+            print("\nAPI VERIFICATION FAILED")
             
     except Exception as e:
-        print(f"\n❌ Error during API test: {e}")
+        print(f"\nError during API test: {e}")
     finally:
         proc.terminate()
 
